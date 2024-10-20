@@ -12,8 +12,9 @@ final class RMTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTabs()
-        // Do any additional setup after loading the view.
     }
+    
+    /// bir tab bar arayüzü oluşturarak üç farklı görünüm denetleyicisini ayrı sekmelere yerleştiren controller
     private func setUpTabs() {
         let characterVC = RMCharacterViewController()
         let episodeVC = RMEpisodeViewController()

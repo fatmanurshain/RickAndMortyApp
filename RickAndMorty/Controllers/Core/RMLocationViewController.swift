@@ -7,6 +7,8 @@
 
 import UIKit
 
+/// konumların gösterileceği controller
+
 final class RMLocationViewController: UIViewController {
 
     override func viewDidLoad() {

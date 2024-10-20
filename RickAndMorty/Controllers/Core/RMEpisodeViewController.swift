@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// bölümlerin gösterileceği controller
 final class RMEpisodeViewController: UIViewController {
 
     override func viewDidLoad() {

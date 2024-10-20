@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// karakterlerin gösterileceği controller
 final class RMCharacterViewController: UIViewController {
 
     override func viewDidLoad() {
