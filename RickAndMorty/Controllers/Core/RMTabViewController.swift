@@ -19,14 +19,17 @@ final class RMTabBarController: UITabBarController {
         let characterVC = RMCharacterViewController()
         let episodeVC = RMEpisodeViewController()
         let locationVC = RMLocationViewController()
+        let learningVC = RMLearningViewController()
         
         characterVC.navigationItem.largeTitleDisplayMode = .automatic
         episodeVC.navigationItem.largeTitleDisplayMode = .automatic
         locationVC.navigationItem.largeTitleDisplayMode = .automatic
+        learningVC.navigationItem.largeTitleDisplayMode = .automatic
         
         let nav1 = UINavigationController(rootViewController: characterVC)
         let nav2 = UINavigationController(rootViewController: episodeVC)
         let nav3 = UINavigationController(rootViewController: locationVC)
+        let nav4 = UINavigationController(rootViewController: learningVC)
         
         nav1.tabBarItem = UITabBarItem(
             title: "",
@@ -42,14 +45,19 @@ final class RMTabBarController: UITabBarController {
             title: "",
             image: UIImage(systemName: "location.north.line"),
             tag: 3)
+        
+        nav4.tabBarItem = UITabBarItem(
+            title: "",
+            image: UIImage(systemName: "bookmark.square.fill"),
+            tag: 4)
 
         
-        for nav in [nav1, nav2, nav3] {
+        for nav in [nav1, nav2, nav3, nav4] {
             nav.navigationBar.prefersLargeTitles = true
         }
         
         setViewControllers(
-            [nav1, nav2, nav3],
+            [nav1, nav2, nav3, nav4],
             animated: true)
     }
     
