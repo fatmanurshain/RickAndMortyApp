@@ -19,7 +19,7 @@ final class RMRequest {
    private let enpoint: RMEndpoint
     
    ///API için yol bileşeni var mı?
-   private let pathComponents: Set<String>
+    private let pathComponents: [String]
    
    ///API için sorgu parametreleri var mı?
    private let queryParameters: [URLQueryItem]
@@ -64,11 +64,15 @@ final class RMRequest {
     ///   - queryParameters: sorgu parametrelerinin bir koleksiyonu
     public init(
         endpoint: RMEndpoint,
-        pathComponents: Set<String> = [],
+        pathComponents: [String] = [],
         queryParameters: [URLQueryItem] = []
     ) {
         self.enpoint = endpoint
         self.pathComponents = pathComponents
         self.queryParameters = queryParameters
     }
+}
+
+extension RMRequest {
+    static let listCharacterRequest = RMRequest(endpoint: .character)
 }
