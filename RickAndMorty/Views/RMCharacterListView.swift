@@ -7,9 +7,9 @@
 
 import UIKit
 
-final class CharacterListView: UIView {
+final class RMCharacterListView: UIView {
     
-    private let viewModel = CharacterListViewViewModel()
+    private let viewModel = RMCharacterListViewViewModel()
     
     //yükleme göstergesi
     private let spinner: UIActivityIndicatorView = {
@@ -27,7 +27,7 @@ final class CharacterListView: UIView {
         collectionView.isHidden = true
         collectionView.alpha = 0 //opacity
         collectionView.translatesAutoresizingMaskIntoConstraints = false /// Auto Layout ile kullanılmak üzere view'in otomatik kısıtlamalara çevrilmemesini sağlar
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(RMCharacterCollectionViewCell.self,                forCellWithReuseIdentifier: RMCharacterCollectionViewCell.cellIdentifier)
         return collectionView
         
     }()
@@ -43,6 +43,7 @@ final class CharacterListView: UIView {
         addConstraints()
         
         spinner.startAnimating()
+        viewModel.delegate = self
         viewModel.fetchCharacters()
         
         setupCollectionView()
@@ -70,16 +71,17 @@ final class CharacterListView: UIView {
         collectionView.dataSource = viewModel
         collectionView.delegate = viewModel
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.spinner.stopAnimating() // Spinner'ı durdur
-            
-            self.collectionView.isHidden = false // Collection view'ı görünür hale getir
-            
-            // Animasyon başlat
-            UIView.animate(withDuration: 0.4) {
-                self.collectionView.alpha = 1 // Collection view'ın görünürlüğünü artır
-            }
-        }
+    }
+}
 
+extension RMCharacterListView: RMCharacterListViewViewModelDelegate {
+    func didLoadInitialCharacters() {
+        spinner.stopAnimating()
+        collectionView.isHidden = false
+        collectionView.reloadData()
+        
+        UIView.animate(withDuration: 0.4) {
+            self.collectionView.alpha = 1
+        }
     }
 }

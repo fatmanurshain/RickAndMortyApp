@@ -37,17 +37,17 @@ final class RMTabBarController: UITabBarController {
             tag: 1)
         
         nav2.tabBarItem = UITabBarItem(
-            title: "",
+            title: "Locations",
             image: UIImage(systemName: "sparkles.tv.fill"),
             tag: 2)
 
         nav3.tabBarItem = UITabBarItem(
-            title: "",
+            title: "Episodes",
             image: UIImage(systemName: "location.north.line"),
             tag: 3)
         
         nav4.tabBarItem = UITabBarItem(
-            title: "",
+            title: "Learning",
             image: UIImage(systemName: "bookmark.square.fill"),
             tag: 4)
 
